@@ -17,6 +17,7 @@ import { GameModule } from './games/games.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
     }),
+
     GenresModule,
     GameModule,
   ],

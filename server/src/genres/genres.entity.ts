@@ -1,4 +1,4 @@
-import { Game } from 'src/game/game.entity';
+import { Game } from 'src/games/games.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 
 @Entity()
@@ -8,6 +8,9 @@ export class Genre {
 
   @Column()
   name: string;
+
+  @Column()
+  genresImg: string;
 
   @ManyToMany(() => Game, (game) => game.genres)
   games: Game[];

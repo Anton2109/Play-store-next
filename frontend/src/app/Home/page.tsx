@@ -1,14 +1,33 @@
+"use client"
+
 import Link from "next/link";
 import styles from "./Content.module.css";
-import { genres } from "@/arr.data.js";
+import { useEffect, useState } from "react";
+import { GenresI } from "@/types/GenresI";
+import GameService from "@/API/GameService";
 
 const HomePage = () => {
+  const [genres, setGneres] = useState<GenresI[]>([])
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const data = await GameService.getGenres();
+        setGneres(data)
+      } catch (error) {
+        console.log('Ошибка при получении жанров:', error)
+      }
+    };
+
+    fetchGenres();
+  }, [])
+
   return (
     <div className={styles.container}>
       {genres.slice(0, 12).map((genre) => (
         <Link key={genre.id} href={`/genres/${genre.id}`}>
           <div className={styles.card}>
-            <img src={genre.img} alt={genre.name} className={styles.image} />
+            <img src={genre.genresImg} alt={genre.name} className={styles.image} />
             <h2 className={styles.title}>{genre.name}</h2>
           </div>
         </Link>

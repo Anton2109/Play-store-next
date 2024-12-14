@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Genre } from './genres.entity';
 import { CreateGenreDto } from './genres.dto';
-import { Game } from 'src/game/game.entity';
+import { Game } from 'src/games/games.entity';
 
 @Injectable()
 export class GenresService {
@@ -13,7 +13,11 @@ export class GenresService {
   ) {}
 
   async findAll(): Promise<Genre[]> {
-    return this.genreRepository.find();
+    const genres = await this.genreRepository.find();
+    return genres.map((genre) => ({
+      ...genre,
+      imageUrl: `http://localhost:4200/Images/ImgGenres/${genre.genresImg}`,
+    }))
   }
 
   async findOne(id: number): Promise<Genre> {
