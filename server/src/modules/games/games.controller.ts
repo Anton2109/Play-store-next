@@ -9,7 +9,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { GameService } from './games.service';
-import { CreateGameDto } from './games.dto';
+import { CreateGameDto } from './dto/games.dto';
 import { Game } from './games.entity';
 
 @Controller('game')

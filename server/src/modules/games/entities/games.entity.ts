@@ -1,4 +1,4 @@
-import { Genre } from 'src/genres/genres.entity';
+import { Genre } from '../../genres/entities/genres.entity';
 import {
   Entity,
   Column,
@@ -15,7 +15,7 @@ export class Game {
   @Column({ length: 255 })
   name: string;
 
-  @Column({ length: 255 })
+  @Column({ length: 255, name: 'img_path' })
   img: string;
 
   @Column()

@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsInt } from 'class-validator';
 
 export class CreateGameDto {
   @IsString()
@@ -9,7 +9,7 @@ export class CreateGameDto {
   @IsNotEmpty()
   readonly img: string;
 
-  @IsNumber()
+  @IsInt()
   @IsNotEmpty()
   readonly price: number;
 }

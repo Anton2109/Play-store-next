@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar/page";
+import Footer from "@/components/Footer/page";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div className="pageContainer">
+          <Navbar />
+          <div className="content">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

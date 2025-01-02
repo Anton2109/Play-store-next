@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GenresModule } from './genres/genres.module';
-import { GameModule } from './games/games.module';
+import { GenresModule } from './modules/genres/genres.module';
+import { GameModule } from './modules/games/games.module';
 
 @Module({
   imports: [

@@ -2,20 +2,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  color: white;
-  height: 70px;
+  background: linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 15px 30px;
+  color: #fff;
+  height: 80px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  position: relative;
+  z-index: 100;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: scanline 4s linear infinite;
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
   flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  /* text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); */
+  color: #FFD700;
 }
 
 .logo span {
-  color: #FFCF40;
+  color: #00ffff;
+  animation: neonPulse 2s infinite;
 }
 
 .navWrapper {
@@ -23,11 +49,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 .nav {
-  width: 60%;
+  width: 70%;
 }
 
 .navList {
@@ -37,23 +63,148 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .navItem {
   cursor: pointer;
-  transition: color 0.2s ease;
-  margin: 0 10px;
-  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+  margin: 0 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 5px 10px;
+}
+
+.navItem::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #00ffff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.navItem:hover::before {
+  transform: scaleX(1);
 }
 
 .navItem:hover {
-  color: #FFCF40;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 .navItem input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 8px 15px;
   width: 200px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.navItem input:focus {
+  outline: none;
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.8),
+      0 0 30px rgba(0, 255, 255, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    width: 90%;
+  }
+
+  .navList {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+  }
+
+  .navWrapper {
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navItem {
+    margin: 10px 0;
+  }
+}
+
+.navLink {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.active {
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.active::before {
+  transform: scaleX(1);
+}
+
+.hovered {
+  color: #00ffff;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.navLink {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navLink:hover {
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./Content.module.css";
+import styles from "./Genre.module.css";
 import { useEffect, useState } from "react";
 import GameService from "@/API/GameService";
 import { GamesI } from "@/types/GamesI";
@@ -15,7 +15,7 @@ const GamesByGenreId = () => {
     const fetchGames = async () => {
       try {
         const data = await GameService.getGamesByGenreID(Number(id));
-        setGames(data.games);
+        setGames(data);
       } catch (error) {
         console.log("Ошибка при получении игр:", error);
       }
