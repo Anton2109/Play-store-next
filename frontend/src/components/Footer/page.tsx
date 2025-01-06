@@ -1,3 +1,4 @@
+import { FaTelegram, FaVk, FaInstagram } from "react-icons/fa";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -13,30 +14,21 @@ const Footer = () => {
           <h3>Социальные сети</h3>
           <ul>
             <li>
-              <a
-                href="https://facebook.com/playstore"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
+              <a href="!#" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Vkontakte
+                <FaVk className={styles.icon} />
               </a>
             </li>
             <li>
-              <a
-                href="https://twitter.com/playstore"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
+              <a href="!#" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Telegram
+                <FaTelegram className={styles.icon} />
               </a>
             </li>
             <li>
-              <a
-                href="https://instagram.com/playstore"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="!#" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 Instagram
+                <FaInstagram className={styles.icon} />
               </a>
             </li>
           </ul>
