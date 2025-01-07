@@ -16,4 +16,9 @@ export default class GameService {
   static getImageUrl(relativePath: string) {
     return `${baseUrl}${relativePath}`;
   }
+  
+  static async getGameById(id: number) {
+    const response = await axios.get(`${baseUrl}/game-by-id/${id}`);
+    return response.data;
+  }
 }

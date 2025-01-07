@@ -1,15 +1,21 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Game } from './games.entity';
-import { CreateGameDto } from './dto/games.dto';
+import { Game } from './entities/games.entity';
 import { pathsConfig } from '../../config/paths.config';
+import { SystemReqMin } from '../system_req_min/entities/system_req_min.entity';
+import { SystemReqMax } from '../system_req_max/entities/system_req_max.entity';
+import { GameWithRequirementsDto } from '../../common/dto/game-with-requirements.dto';
 
 @Injectable()
 export class GameService {
   constructor(
     @InjectRepository(Game)
     private readonly gameRepository: Repository<Game>,
+    @InjectRepository(SystemReqMin)
+    private readonly systemReqMinRepository: Repository<SystemReqMin>,
+    @InjectRepository(SystemReqMax)
+    private readonly systemReqMaxRepository: Repository<SystemReqMax>,
   ) {}
 
   async findAll(): Promise<Game[]> {
@@ -36,9 +42,30 @@ export class GameService {
     };
   }
 
-  async create(createGameDto: CreateGameDto): Promise<Game> {
-    const game = this.gameRepository.create(createGameDto);
-    return this.gameRepository.save(game);
+  async create(createGameDto: GameWithRequirementsDto): Promise<Game> {
+    const newGame = new Game();
+    Object.assign(newGame, {
+      name: createGameDto.name,
+      img: createGameDto.img,
+      price: createGameDto.price,
+    });
+    const game = await this.gameRepository.save(newGame);
+
+    const minReq = new SystemReqMin();
+    Object.assign(minReq, {
+      ...createGameDto.minimumRequirements,
+      gameId: game.id,
+    });
+    await this.systemReqMinRepository.save(minReq);
+
+    const maxReq = new SystemReqMax();
+    Object.assign(maxReq, {
+      ...createGameDto.recommendedRequirements,
+      gameId: game.id,
+    });
+    await this.systemReqMaxRepository.save(maxReq);
+
+    return this.findOne(game.id);
   }
 
   async remove(id: number): Promise<void> {

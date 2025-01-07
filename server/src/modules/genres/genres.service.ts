@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Genre } from './entities/genres.entity';
 import { CreateGenreDto } from './dto/genres.dto';
 import { pathsConfig } from '../../config/paths.config';
-import { Game } from '../games/games.entity';
+import { Game } from '../games/entities/games.entity';
 
 @Injectable()
 export class GenresService {

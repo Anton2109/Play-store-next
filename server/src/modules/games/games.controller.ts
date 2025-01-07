@@ -9,8 +9,8 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { GameService } from './games.service';
-import { CreateGameDto } from './dto/games.dto';
-import { Game } from './games.entity';
+import { GameWithRequirementsDto } from '../../common/dto/game-with-requirements.dto';
+import { Game } from './entities/games.entity';
 
 @Controller('game')
 export class GameController {
@@ -28,7 +28,7 @@ export class GameController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createGameDto: CreateGameDto): Promise<Game> {
+  async create(@Body() createGameDto: GameWithRequirementsDto): Promise<Game> {
     return this.gameService.create(createGameDto);
   }
 

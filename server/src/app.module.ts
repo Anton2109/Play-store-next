@@ -4,6 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GenresModule } from './modules/genres/genres.module';
 import { GameModule } from './modules/games/games.module';
+import { GameByIdModule } from './modules/game-by-id/game-by-id.module';
+import { GameInfoModule } from './modules/game-info/game-info.module';
+import { SystemReqMinModule } from './modules/system_req_min/system_req_min.module';
+import { SystemReqMaxModule } from './modules/system_req_max/system_req_max.module';
 
 @Module({
   imports: [
@@ -20,6 +24,10 @@ import { GameModule } from './modules/games/games.module';
 
     GenresModule,
     GameModule,
+    GameByIdModule,
+    GameInfoModule,
+    SystemReqMinModule,
+    SystemReqMaxModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,0 +1,100 @@
+.gameContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+
+.gameTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.gameContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.imageSection {
+  position: relative;
+}
+
+.gameImage {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.price {
+  font-size: 2rem;
+  color: #4caf50;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.requirementsSection {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.requirementsTitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.requirementsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.requirementItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.requirementLabel {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.requirementValue {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .gameContent {
+    grid-template-columns: 1fr;
+  }
+
+  .requirementsList {
+    grid-template-columns: 1fr;
+  }
+
+  .gameTitle {
+    font-size: 2rem;
+  }
+}
