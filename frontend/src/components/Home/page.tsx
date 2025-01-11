@@ -1,10 +1,11 @@
 "use client"
 
 import Link from "next/link";
-import styles from "./Content.module.css";
+import styles from "./Home.module.css";
 import { useEffect, useState } from "react";
 import { GenresI } from "@/types/GenresI";
 import GameService from "@/API/GameService";
+import Loader from "@/UI/Loader/Loader";
 
 const HomePage = () => {
   const [genres, setGneres] = useState<GenresI[]>([])
@@ -21,6 +22,10 @@ const HomePage = () => {
 
     fetchGenres();
   }, [])
+
+  if (!genres.length) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.container}>

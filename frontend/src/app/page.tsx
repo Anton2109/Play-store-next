@@ -1,12 +1,10 @@
-import Footer from "@/components/Footer/page";
-import Navbar from "@/components/Navbar/page";
-import HomePage from "@/components/Home/page";
 import styles from "./page.module.css";
+import HomePage from '@/components/Home/page';
 
 export default function Home() {
   return (
-      <div className={styles.content}>
+    <div className={styles.content}>
         <HomePage />
-      </div>
+    </div>
   );
 }

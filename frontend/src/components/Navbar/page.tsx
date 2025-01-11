@@ -20,7 +20,7 @@ const Navbar = () => {
     { name: "Скидки", path: "/sales" },
     { name: "Популярные", path: "/popular" },
     { name: "Поиск", path: null },
-    { name: "Избранное", path: "/favorites" },
+    { name: "Избранное", path: "/favourites" },
     { name: "Мои покупки", path: "/purchases" },
   ];
 
