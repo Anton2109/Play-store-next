@@ -5,6 +5,7 @@ import { Game } from '../games/entities/games.entity';
 import { GameInfo } from '../game-info/entities/game-info.entity';
 import { SystemReqMin } from '../system_req_min/entities/system_req_min.entity';
 import { SystemReqMax } from '../system_req_max/entities/system_req_max.entity';
+import { pathsConfig } from '../../config/paths.config';
 
 @Injectable()
 export class GameByIdService {
@@ -43,10 +44,10 @@ export class GameByIdService {
     return {
       id: game.id,
       name: game.name,
+      img: `${pathsConfig.baseUrl}${pathsConfig.assets.images.games}/${game.img}`,
       price: game.price,
       info: {
         description: gameInfo?.description,
-        img: gameInfo?.img,
       },
       systemRequirements: {
         minimum: minReq

@@ -11,7 +11,7 @@
 .wave {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100px;
   font-family: "Rubik Mono One", monospace;
   -webkit-box-reflect: below 0px

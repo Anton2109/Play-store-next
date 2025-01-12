@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import styles from "./Genre.module.css";
 import { useEffect, useState } from "react";
+import styles from "./Genre.module.css";
 import GameService from "@/API/GameService";
 import { GamesI } from "@/types/GamesI";
 import { useParams } from "next/navigation";
+import GameCard from "@/components/GameCard/GameCard";
 
 const GamesByGenreId = () => {
   const [games, setGames] = useState<GamesI[]>([]);
@@ -29,13 +29,7 @@ const GamesByGenreId = () => {
   return (
     <div className={styles.container}>
       {games.slice(0, 12).map((game) => (
-        <Link key={game.id} href={`/games/${game.id}`}>
-          <div className={styles.card}>
-            <h2 className={styles.title}>{game.name}</h2>
-            <img src={game.img} alt={game.name} className={styles.image} />
-            <h2 className={styles.price}>{game.price}</h2>
-          </div>
-        </Link>
+        <GameCard key={game.id} game={game} />
       ))}
     </div>
   );
