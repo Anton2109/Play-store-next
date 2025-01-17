@@ -6,6 +6,7 @@ import GameService from "@/API/GameService";
 import { GamesI } from "@/types/GamesI";
 import { useParams } from "next/navigation";
 import GameCard from "@/components/GameCard/GameCard";
+import Loader from "@/UI/Loader/Loader";
 
 const GamesByGenreId = () => {
   const [games, setGames] = useState<GamesI[]>([]);
@@ -25,6 +26,10 @@ const GamesByGenreId = () => {
       fetchGames();
     }
   }, [id]);
+
+  if (games.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.container}>

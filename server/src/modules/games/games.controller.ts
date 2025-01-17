@@ -12,7 +12,7 @@ import { GameService } from './games.service';
 import { GameWithRequirementsDto } from '../../common/dto/game-with-requirements.dto';
 import { Game } from './entities/games.entity';
 
-@Controller('game')
+@Controller('games')
 export class GameController {
   constructor(private readonly gameService: GameService) {}
 

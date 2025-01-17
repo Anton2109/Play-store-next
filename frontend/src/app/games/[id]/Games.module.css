@@ -24,8 +24,8 @@
 }
 
 .gameImage {
-  width: 100%;
-  height: auto;
+  width: 565px;
+  height: 565px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -48,6 +48,30 @@
   color: #4caf50;
   font-weight: bold;
   margin: 20px 0;
+
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 8px 15px;
+  width: 300px;
+  transition: all 0.4s ease;
+}
+
+.price:hover {
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2),
+    0 0 15px rgba(0, 255, 255, 0.1);
+
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  }
 }
 
 .requirementsSection {
@@ -83,6 +107,52 @@
 .requirementValue {
   color: #fff;
   font-size: 1.1rem;
+}
+
+.requirementsToggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.toggleButton {
+  font-size: 1rem;
+  color: #4caf50;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 8px 15px;
+  transition: all 0.4s ease;
+  text-align: center;
+  flex: 1;
+}
+
+.toggleButton:hover {
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2),
+    0 0 15px rgba(0, 255, 255, 0.1);
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+.toggleButton.active {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.6);
+  color: #fff;
+}
+
+.toggleButton.active:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes neon {
+  from {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  }
 }
 
 @media (max-width: 768px) {

@@ -5,9 +5,11 @@ import { useParams } from "next/navigation";
 import { GameCardI } from "@/types/GamesI";
 import GameService from "@/API/GameService";
 import styles from "./Games.module.css";
+import RequirementsList from "@/components/Requirements/RequirementsList";
 
 const GamePage = () => {
   const [game, setGame] = useState<GameCardI>();
+  const [showRecommended, setShowRecommended] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,60 +27,53 @@ const GamePage = () => {
     }
   }, [id]);
 
+  if (!game) {
+    return <div>Загрузка...</div>;
+  }
+
   return (
     <div className={styles.gameContainer}>
-      <h1 className={styles.gameTitle}>{game?.name}</h1>
+      <h1 className={styles.gameTitle}>{game.name}</h1>
 
       <div className={styles.gameContent}>
         <div className={styles.imageSection}>
-          <img
-            className={styles.gameImage}
-            src={game?.info.img}
-            alt={game?.name}
-          />
+          <img className={styles.gameImage} src={game.img} alt={game.name} />
         </div>
 
         <div className={styles.infoSection}>
-          <p className={styles.description}>{game?.info.description}</p>
-          <div className={styles.price}>{game?.price} ₽</div>
+          <p className={styles.description}>{game.info.description}</p>
+          <button className={styles.price}>Купить за {game.price} ₽</button>
 
-          <div className={styles.requirementsSection}>
-            <h2 className={styles.requirementsTitle}>Системные требования</h2>
-            <div className={styles.requirementsList}>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>Windows</span>
-                <span className={styles.requirementValue}>{game?.windows}</span>
-              </div>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>Процессор</span>
-                <span className={styles.requirementValue}>
-                  {game?.processor}
-                </span>
-              </div>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>
-                  Оперативная память
-                </span>
-                <span className={styles.requirementValue}>{game?.RAM} GB</span>
-              </div>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>Видеокарта</span>
-                <span className={styles.requirementValue}>
-                  {game?.graphicsCard}
-                </span>
-              </div>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>DirectX</span>
-                <span className={styles.requirementValue}>{game?.DirectX}</span>
-              </div>
-              <div className={styles.requirementItem}>
-                <span className={styles.requirementLabel}>Место на диске</span>
-                <span className={styles.requirementValue}>
-                  {game?.diskSpace}
-                </span>
-              </div>
-            </div>
+          <div className={styles.requirementsToggle}>
+            <button
+              className={`${styles.toggleButton} ${
+                !showRecommended ? styles.active : ""
+              }`}
+              onClick={() => setShowRecommended(false)}
+            >
+              Минимальные
+            </button>
+            <button
+              className={`${styles.toggleButton} ${
+                showRecommended ? styles.active : ""
+              }`}
+              onClick={() => setShowRecommended(true)}
+            >
+              Рекомендованные
+            </button>
           </div>
+
+          {showRecommended ? (
+            <RequirementsList
+              requirements={game.systemRequirements.recommended}
+              title="Рекомендованные системные требования"
+            />
+          ) : (
+            <RequirementsList
+              requirements={game.systemRequirements.minimum}
+              title="Минимальные системные требования"
+            />
+          )}
         </div>
       </div>
     </div>

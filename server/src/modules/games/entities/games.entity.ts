@@ -7,7 +7,7 @@ import {
   JoinTable,
 } from 'typeorm';
 
-@Entity()
+@Entity('games')
 export class Game {
   @PrimaryGeneratedColumn()
   id: number;
