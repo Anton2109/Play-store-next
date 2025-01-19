@@ -5,6 +5,7 @@ import styles from "./Navbar.module.css";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
 
 interface NavItem {
   name: string;
@@ -21,7 +22,8 @@ const Navbar = () => {
     { name: "Популярные", path: "/popular" },
     { name: "Поиск", path: null },
     { name: "Избранное", path: "/favourites" },
-    { name: "Мои покупки", path: "/purchases" },
+    { name: "Корзина", path: "/basket" },
+    { name: "Профиль", path: "/profile" },
   ];
 
   const handleItemHover = (item: string | null) => {
@@ -33,12 +35,17 @@ const Navbar = () => {
       return <Search />;
     }
 
+    let icon = null;
+    if (item.name === "Корзина") {
+      icon = <FaShoppingCart className={styles.icon} />;
+    } else if (item.name === "Профиль") {
+      icon = <FaUser className={styles.icon} />;
+    }
+
     return (
-      <Link
-        href={item.path || "/"}
-        className={styles.navLink}
-      >
+      <Link href={item.path || "/"} className={styles.navLink}>
         {item.name}
+        {icon}
       </Link>
     );
   };

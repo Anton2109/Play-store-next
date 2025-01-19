@@ -36,6 +36,11 @@
   gap: 20px;
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
 .description {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -43,8 +48,8 @@
   color: #ccc;
 }
 
-.price {
-  font-size: 2rem;
+.priceButton {
+  font-size: 24px;
   color: #4caf50;
   font-weight: bold;
   margin: 20px 0;
@@ -58,7 +63,7 @@
   transition: all 0.4s ease;
 }
 
-.price:hover {
+.priceButton:hover {
   box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2),
     0 0 15px rgba(0, 255, 255, 0.1);
 
@@ -75,6 +80,8 @@
 }
 
 .requirementsSection {
+  width: 565px;
+  height: 300px;
   background: rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 10px;

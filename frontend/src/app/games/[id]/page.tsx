@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { GameCardI } from "@/types/GamesI";
+import Image from "next/image";
 import GameService from "@/API/GameService";
 import styles from "./Games.module.css";
 import RequirementsList from "@/components/Requirements/RequirementsList";
+import Loader from "@/UI/Loader/Loader";
 
 const GamePage = () => {
   const [game, setGame] = useState<GameCardI>();
@@ -28,7 +30,7 @@ const GamePage = () => {
   }, [id]);
 
   if (!game) {
-    return <div>Загрузка...</div>;
+    return <Loader />;
   }
 
   return (
@@ -36,13 +38,32 @@ const GamePage = () => {
       <h1 className={styles.gameTitle}>{game.name}</h1>
 
       <div className={styles.gameContent}>
-        <div className={styles.imageSection}>
+        {/* <div className={styles.imageSection}>
           <img className={styles.gameImage} src={game.img} alt={game.name} />
+        </div> */}
+
+        <div className={styles.imageSection}>
+          {game?.img ? (
+            <Image
+              src={game.img}
+              width={565}
+              height={565}
+              alt={game.name || "Изображение"}
+            />
+          ) : (
+            <div className={styles.placeholder}>Изображение отсутствует</div>
+          )}
         </div>
 
         <div className={styles.infoSection}>
           <p className={styles.description}>{game.info.description}</p>
-          <button className={styles.price}>Купить за {game.price} ₽</button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.priceButton}>
+              Купить за {game.price} ₽
+            </button>
+
+            <button className={styles.priceButton}>Добавить в корзину</button>
+          </div>
 
           <div className={styles.requirementsToggle}>
             <button
