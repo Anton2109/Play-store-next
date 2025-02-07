@@ -8,12 +8,15 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { GameService } from './games.service';
 import { GameWithRequirementsDto } from '../../common/dto/game-with-requirements.dto';
 import { Game } from './entities/games.entity';
 
 @Controller('games')
 export class GameController {
+  private readonly logger = new Logger(GameController.name);
+
   constructor(private readonly gameService: GameService) {}
 
   @Get()
@@ -24,6 +27,11 @@ export class GameController {
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Game> {
     return this.gameService.findOne(+id);
+  }
+
+  @Get('search/:query')
+  async search(@Param('query') query: string): Promise<Game[]> {
+    return this.gameService.search(query);
   }
 
   @Post()

@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Game } from './entities/games.entity';
@@ -27,13 +31,17 @@ export class GameService {
   }
 
   async findOne(id: number): Promise<Game> {
+    if (isNaN(id)) {
+      throw new BadRequestException(`Некрректный ID игры: ${id}`);
+    }
+
     const game = await this.gameRepository.findOne({
       where: { id },
       relations: ['genres'],
     });
 
     if (!game) {
-      throw new NotFoundException(`Игра с ID ${id} не найдена`);
+      throw new NotFoundException(`Game with ID ${id} not found`);
     }
 
     return {
@@ -71,5 +79,17 @@ export class GameService {
   async remove(id: number): Promise<void> {
     const game = await this.findOne(id);
     await this.gameRepository.remove(game);
+  }
+
+  async search(query: string): Promise<Game[]> {
+    const games = await this.gameRepository
+      .createQueryBuilder('game')
+      .where('LOWER(game.name) LIKE LOWER(:query)', { query: `%${query}%` })
+      .getMany();
+  
+    return games.map((game) => ({
+      ...game,
+      img: `${pathsConfig.baseUrl}${pathsConfig.assets.images.games}/${game.img}`,
+    }));
   }
 }

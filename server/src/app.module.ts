@@ -20,6 +20,7 @@ import { SystemReqMaxModule } from './modules/system_req_max/system_req_max.modu
       database: 'game_store',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
+      logging: true,
     }),
 
     GenresModule,

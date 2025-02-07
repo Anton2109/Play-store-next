@@ -20,6 +20,11 @@ body {
   margin: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .pageContainer {
   display: flex;
   flex-direction: column;

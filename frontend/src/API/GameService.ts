@@ -1,3 +1,4 @@
+import { GamesI } from "@/types/GamesI";
 import axios from "axios";
 
 const baseUrl = process.env.BASE_URL || "http://localhost:4200";
@@ -5,6 +6,11 @@ const baseUrl = process.env.BASE_URL || "http://localhost:4200";
 export default class GameService {
   static async getGenres() {
     const response = await axios.get(`${baseUrl}/genres`);
+    return response.data;
+  }
+
+  static async getGames() {
+    const response = await axios.get(`${baseUrl}/games`);
     return response.data;
   }
 
@@ -16,9 +22,16 @@ export default class GameService {
   static getImageUrl(relativePath: string) {
     return `${baseUrl}${relativePath}`;
   }
-  
+
   static async getGameById(id: number) {
     const response = await axios.get(`${baseUrl}/game-by-id/${id}`);
+    return response.data;
+  }
+
+  static async searchGames(query: string): Promise<GamesI[]> {
+    const response = await axios.get<GamesI[]>(
+      `${baseUrl}/games/search/${query}`
+    );
     return response.data;
   }
 }
