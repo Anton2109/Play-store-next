@@ -8,6 +8,7 @@ import GameService from "@/API/GameService";
 import styles from "./Games.module.css";
 import RequirementsList from "@/components/Requirements/RequirementsList";
 import Loader from "@/UI/Loader/Loader";
+import { Button } from "@/UI/Button/Button";
 
 const GamePage = () => {
   const [game, setGame] = useState<GameCardI>();
@@ -58,9 +59,11 @@ const GamePage = () => {
         <div className={styles.infoSection}>
           <p className={styles.description}>{game.info.description}</p>
           <div className={styles.buttonContainer}>
-            <button className={styles.priceButton}>
+            {/* <button className={styles.priceButton}>
               Купить за {game.price} ₽
-            </button>
+            </button> */}
+
+            <Button>Купить за {game.price}</Button>
 
             <button className={styles.priceButton}>Добавить в корзину</button>
           </div>

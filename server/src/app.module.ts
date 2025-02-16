@@ -8,6 +8,7 @@ import { GameByIdModule } from './modules/game-by-id/game-by-id.module';
 import { GameInfoModule } from './modules/game-info/game-info.module';
 import { SystemReqMinModule } from './modules/system_req_min/system_req_min.module';
 import { SystemReqMaxModule } from './modules/system_req_max/system_req_max.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { SystemReqMaxModule } from './modules/system_req_max/system_req_max.modu
     GameInfoModule,
     SystemReqMinModule,
     SystemReqMaxModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
