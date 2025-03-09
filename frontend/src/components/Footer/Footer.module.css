@@ -81,6 +81,8 @@
 }
 
 .footerSection ul li {
+  display: flex;
+  align-items: center;
   margin-bottom: 8px;
   position: relative;
   padding-left: 15px;

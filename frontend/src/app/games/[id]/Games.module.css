@@ -50,7 +50,7 @@
 
 .priceButton {
   font-size: 24px;
-  color: #4caf50;
+  color: #ffd700;
   font-weight: bold;
   margin: 20px 0;
 
@@ -124,7 +124,7 @@
 
 .toggleButton {
   font-size: 1rem;
-  color: #4caf50;
+  color: #ffd700;
   font-weight: bold;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.3);

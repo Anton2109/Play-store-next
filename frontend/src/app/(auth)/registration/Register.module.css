@@ -1,46 +1,33 @@
 .container {
   display: flex;
   min-height: 100vh;
-  padding: 2rem;
-  background: #0a0a12;
+  padding: 20px;
   font-family: "Segoe UI", sans-serif;
 }
 
 .formContainer {
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   margin: auto;
   background: rgba(0, 0, 0, 0.3);
-  padding: 2.5rem;
+  padding: 40px;
   border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 10px;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.formTitle {
-  color: #00ffff;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
-}
-
-.formGroup {
-  margin-bottom: 1.5rem;
-}
-
 .formLabel {
   display: block;
+  margin-bottom: 15px;
   color: #fff;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
 }
 
-.formInput {
+.formContainer input {
   width: 100%;
-  padding: 0.8rem;
+  padding: 12px;
+  margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 6px;
@@ -49,7 +36,7 @@
   transition: all 0.3s ease;
 }
 
-.formInput:focus {
+.formContainer input:focus {
   outline: none;
   border-color: #00ffff;
   box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
@@ -59,24 +46,18 @@
   width: 100%;
   background: rgba(0, 255, 255, 0.1);
   color: #00ffff;
-  padding: 0.8rem;
+  padding: 14px;
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 6px;
   font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
 }
 
-.regButton:hover:not(:disabled) {
+.regButton:hover {
   background: rgba(0, 255, 255, 0.2);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-}
-
-.disabledButton {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .ili {
@@ -107,58 +88,42 @@
   transform: translateX(10px);
 }
 
-.switchFormLink {
+.enterButton {
   display: block;
-  text-align: center;
+  width: 100%;
+  background: transparent;
   color: #ffd700;
+  padding: 14px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 6px;
+  text-align: center;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
-.switchFormLink:hover {
-  color: #ffdf40;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+.enterButton:hover {
+  background: rgba(255, 215, 0, 0.1);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
 }
 
 .errorMessage {
   color: #ff4444;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: -15px;
+  margin-bottom: 15px;
   display: block;
-  animation: errorGlitch 0.5s infinite;
-}
-
-@keyframes errorGlitch {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(2px);
-  }
-  50% {
-    transform: translateX(-2px);
-  }
-  75% {
-    transform: translateX(1px);
-  }
-  100% {
-    transform: translateX(0);
-  }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-  }
-
   .formContainer {
-    padding: 1.5rem;
+    width: 100%;
+    padding: 25px;
     border: none;
     background: rgba(0, 0, 0, 0.5);
   }
 
-  .formTitle {
-    font-size: 1.5rem;
+  .formContainer input {
+    padding: 10px;
   }
 }
